@@ -1,53 +1,38 @@
-#Escriba un programa que simule una calculadora básica, este puede realizar operación de suma, resta, multiplicación y 
-# división.
+#Exercise 8. Escriba un programa que entregue la edad del usuario a partir de su fecha de nacimiento:
 
-#El programa debe recibir como entrada 2 números reales y un operador, que puede ser +, -, * o /.
+#Ingrese su fecha de nacimiento.
+#Dia: 14
+#Mes: 6
+#Anno: 1948
+#Usted tiene 62 annos
+#Por supuesto, el resultado entregado depende del día en que su programa será ejecutado.
 
-#La salida del programa debe ser el resultado de la operación.
+#Para obtener la fecha actual, puede hacerlo usando la función localtime que viene en el módulo time. Los valores se obtienen de la siguiente manera (suponiendo que hoy es 11 de marzo de 2011):
 
-#Operando: 3
-#Operador: +
-#Operando: 2
-#3 + 2 = 5
+#>>> from time import localtime
+#>>> t = localtime()
+#>>> t.tm_mday
+#11
+#>>> t.tm_mon
+#3
+#>>> t.tm_year
+#2011
+#El programa debe tener en cuenta si el cumpleaños ingresado ya pasó durante este año, o si todavía no ocurre.
 
-#Operando: 6
-#Operador: -
-#Operando: 7
-#6 - 7 = -1
+from time import localtime
 
-#Operando: 4
-#Operador: *
-#Operando: 5
-#4 * 5 = 20
+t = localtime()
+current_day = t.tm_mday
+current_month = t.tm_mon
+current_year = t.tm_year
 
-#Operando: 10
-#Operador: /
-#Operando: 4
-#10 / 4 = 2.5
+birth_day = int(input("Enter your birth date.\nDay: "))
+birth_month = int(input("Month: "))
+birth_year = int(input("Year: "))
 
-#Operando: -1
-#Operador: **
-#Operando: 4
-#-1 ** 4 = 1
+age = current_year - birth_year
 
-operand1 = float(input("Operand: "))
-operator = input("Operator (+, -, *, /): ")
-operand2 = float(input("Operand: "))
+if current_month < birth_month or (current_month == birth_month and current_day < birth_day):
+    age -= 1
 
-if operator == "+" :
-    result = operand1 + operand2
-    print(f"{operand1} + {operand2} = {result}")
-elif operator == "-" :
-    result = operand1 - operand2
-    print(f"{operand1} - {operand2} = {result}")
-elif operator == "*" :
-    result = operand1 * operand2
-    print(f"{operand1} * {operand2} = {result}")
-elif operator == "/" :
-    if operand2 != 0 :
-        result = operand1 / operand2
-        print(f"{operand1} / {operand2} = {result}")
-    else:
-        print("Error: Division by zero.")
-else:
-    print(f"Error: Invalid operator '{operator}'. ")
+print(f"You are {age} years old.")
