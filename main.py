@@ -1,30 +1,31 @@
-#Exercise 4. Escriba un programa que pida al usuario dos palabras, y que indique cuál de ellas es la más larga y por 
-# cuántas letras lo es.
+#Exercise 5. Escriba un programa que reciba como entrada dos números, y los muestre ordenados de menor a mayor:
 
-#Palabra 1: edificio
-#Palabra 2: tren
-#La palabra edificio tiene 4 letras mas que tren.
+#Ingrese numero: 51
+#Ingrese numero: 24
+#24 51
+#
+# A continuación, escriba otro programa que haga lo mismo con tres números:
+#
+#Ingrese numero: 8
+#Ingrese numero: 1
+#Ingrese numero: 4
+#1 4 8
+#
+# Finalmente, escriba un tercer programa que ordene cuatro números:
 
-#Palabra 1: sol
-#Palabra 2: paralelepipedo
-#La palabra paralelepipedo tiene 11 letras mas que sol
+#Ingrese numero: 7
+#Ingrese numero: 0
+#Ingrese numero: 6
+#Ingrese numero: 1
+#0 1 6 7
 
-#Palabra 1: plancha
-#Palabra 2: lapices
-#Las dos palabras tienen el mismo largo
+#Recuerde que su programa debe entregar la solución correcta para cualquier combinación de números, no sólo para los ejemplos mostrados aquí.
+#Hay más de una manera de resolver cada ejercicio.
 
-word1 = str(input("Word 1: "))
-word2 = str(input("Word 2: "))
+number1 = int(input("Enter number: "))
+number2 = int(input("Enter number: "))
 
-large1 = len(word1)
-large2 = len(word2)
-
-if large1 > large2:
-    difference = large1 - large2
-    print(f"The word {word1} has {difference} more letters than {word2}")
-elif large2 > large1:
-    difference = large2 - large1
-    print(f"The word {word2} has {difference} more letters than {word1}")
+if number1 < number2:
+    print(number1, number2)
 else:
-    print("The two words have the same length")
-    
+    print(number2, number1)
