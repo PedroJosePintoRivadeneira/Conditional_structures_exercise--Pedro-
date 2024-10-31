@@ -1,25 +1,53 @@
-#Exercise 6. Escriba un programa que determine si un caracter ingresado es letra, número, o ninguno de los dos. 
-# En caso que sea letra, determine si es mayúscula o minúscula.
+#Escriba un programa que simule una calculadora básica, este puede realizar operación de suma, resta, multiplicación y 
+# división.
 
-#Ingrese caracter: 9
-#Es numero.
+#El programa debe recibir como entrada 2 números reales y un operador, que puede ser +, -, * o /.
 
-#Ingrese caracter: A
-#Es letra mayúscula.
+#La salida del programa debe ser el resultado de la operación.
 
-#Ingrese caracter: f
-#Es letra minúscula.
+#Operando: 3
+#Operador: +
+#Operando: 2
+#3 + 2 = 5
 
-#Ingrese caracter: #
-#No es letra ni número.
+#Operando: 6
+#Operador: -
+#Operando: 7
+#6 - 7 = -1
 
-character = input("Enter a character: ")
+#Operando: 4
+#Operador: *
+#Operando: 5
+#4 * 5 = 20
 
-if "0" <= character <= "9" :
-    print("It's a number.")
-elif "A" <= character <= "Z" :
-    print("It's is an uppercase letter.")
-elif "a" <= character <= "z" :
-    print("It's a lowercase letter.")
+#Operando: 10
+#Operador: /
+#Operando: 4
+#10 / 4 = 2.5
+
+#Operando: -1
+#Operador: **
+#Operando: 4
+#-1 ** 4 = 1
+
+operand1 = float(input("Operand: "))
+operator = input("Operator (+, -, *, /): ")
+operand2 = float(input("Operand: "))
+
+if operator == "+" :
+    result = operand1 + operand2
+    print(f"{operand1} + {operand2} = {result}")
+elif operator == "-" :
+    result = operand1 - operand2
+    print(f"{operand1} - {operand2} = {result}")
+elif operator == "*" :
+    result = operand1 * operand2
+    print(f"{operand1} * {operand2} = {result}")
+elif operator == "/" :
+    if operand2 != 0 :
+        result = operand1 / operand2
+        print(f"{operand1} / {operand2} = {result}")
+    else:
+        print("Error: Division by zero.")
 else:
-    print("It's neither a letter not a number.")
+    print(f"Error: Invalid operator '{operator}'. ")
