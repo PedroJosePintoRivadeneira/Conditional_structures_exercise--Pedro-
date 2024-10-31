@@ -1,41 +1,28 @@
-#Exercise 2. Cuando la Tierra completa una órbita alrededor del Sol, no han transcurrido exactamente 365 rotaciones 
-# sobre sí misma, sino un poco más. Más precisamente, la diferencia es de más o menos un cuarto de día.
+#Exercise 3. Escriba un programa que pida dos números enteros y que calcule la división, indicando si la división es 
+# exacta o no.
 
-#Para evitar que las estaciones se desfasen con el calendario, el calendario juliano introdujo la regla de introducir
-# un día adicional en los años divisibles por 4 (llamados bisiestos), para tomar en consideración los cuatro cuartos de 
-# día acumulados.
+#Dividendo: 14
+#Divisor: 5
+#La división no es exacta.
+#Cociente: 2
+#Resto: 4
 
-#Sin embargo, bajo esta regla sigue habiendo un desfase, que es de aproximadamente 3/400 de día.
+#Dividendo: 100
+#Divisor: 10
+#La división es exacta.
+#Cociente: 10
+#Resto: 0
 
-#Para corregir este desfase, en el año 1582 el papa Gregorio XIII introdujo un nuevo calendario, en el que el último 
-# año de cada siglo dejaba de ser bisiesto, a no ser que fuera divisible por 400.
+dividend = int(input("Dividend: "))
+divider = int(input("Divider: "))
 
-#Escriba un programa que indique si un año es bisiesto o no, teniendo en cuenta cuál era el calendario vigente en ese año:
+quotient = dividend // divider
+remains = dividend % divider
 
-#Ingrese un anno: 1988
-#1988 es bisiesto
-#Ingrese un anno: 2011
-#2011 no es bisiesto
-#Ingrese un anno: 1700
-#1700 no es bisiesto
-#Ingrese un anno: 1500
-#1500 es bisiesto
-#Ingrese un anno: 2400
-#2400 es bisiesto
-
-year = int(input("Enter a year "))
-
-if year < 1582:
-    if year % 4 == 0:
-        print(f"{year} is leap year")
-    else:
-        print(f"{year} isn't leap year")
+if remains == 0:
+    print("The division is exact.")
 else:
-    if year % 400 == 0:
-        print(f"{year} is leap year")
-    elif year % 100 == 0:
-        print(f"{year} isn't leap year")
-    elif year % 4 == 0:
-        print(f"{year} is leap year")
-    else:
-        print(f"{year} isn't leap year")
+    print("The division isn't exact.")
+
+print(f"Quotient: {quotient}")
+print(f"Remains: {remains}")
