@@ -25,24 +25,51 @@
 number1 = int(input("Enter number: "))
 number2 = int(input("Enter number: "))
 number3 = int(input("Enter number: "))
+number4 = int(input("Enter number: "))
 
-if number1 <= number2 and number1 <= number3:
+if number1 <= number2 and number1 <= number3 and number1 <= number4:
     minor = number1
-    if number2 <= number3:
-       middle, major = number2, number3
+    if number2 <= number3 and number2 <= number4:
+        middle1, middle2 = number2, min(number3, number4)
+        major = max(number3, number4)
+    elif number3 <= number2 and number3 <= number4:
+        middle1, middle2 = number3, min(number2, number4)
+        major = max(number2, number4)
     else:
-        middle, major = number3, number2
-elif number2 <= number1 and number2 <= number3:
+        middle1, middle2 = number4, min(number2, number3)
+        major = max(number2, number3)
+elif number2 <= number1 and number2 <= number3 and number2 <= number4:
     minor = number2
-    if number1 <= number3:
-        middle, major = number1, number3
+    if number1 <= number3 and number1 <= number4:
+        middle1, middle2 = number1, min(number3, number4)
+        major = max(number3, number4)
+    elif number3 <= number1 and number3 <= number4:
+        middle1, middle2 = number3, min(number1, number4)
+        major = max(number1, number4)
     else:
-        middle, major = number3, number1
-else:
+        middle1, middle2 = number4, min(number1, number3)
+        major = max(number1, number3)
+elif number3 <= number1 and number3 <= number2 and number3 <= number4:
     minor = number3
-    if number1 <= number2:
-        middle, major = number1, number2
+    if number1 <= number2 and number1 <= number4:
+        middle1, middle2 = number1, min(number2, number4)
+        major = max(number2, number4)
+    elif number2 <= number1 and number2 <= number4:
+        middle1, middle2 = number2, min(number1, number4)
+        major = max(number1, number4)
     else:
-        middle, major = number2, number1
+        middle1, middle2 = number4, min(number1, number2)
+        major = max(number1, number2)
+else:
+    minor = number4
+    if number1 <= number2 and number1 <= number3:
+        middle1, middle2 = number1, min(number2, number3)
+        major = max(number2, number3)
+    elif number2 <= number1 and number2 <= number3:
+        middle1, middle2 = number2, min(number1, number3)
+        major = max(number1, number3)
+    else:
+        middle1, middle2 = number3, min(number1, number2)
+        major = max(number1, number2)
 
-print(minor, middle, major)
+print(minor, middle1, middle2, major)
