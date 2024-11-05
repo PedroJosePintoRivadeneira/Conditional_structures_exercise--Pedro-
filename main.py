@@ -1,38 +1,53 @@
-#Exercise 8. Escriba un programa que entregue la edad del usuario a partir de su fecha de nacimiento:
+#El joven periodista Solarrabietas debe relatar un partido de tenis, pero no conoce las reglas del deporte. 
+# En particular, no ha logrado aprender cómo saber si un set ya terminó, y quién lo ganó.
 
-#Ingrese su fecha de nacimiento.
-#Dia: 14
-#Mes: 6
-#Anno: 1948
-#Usted tiene 62 annos
-#Por supuesto, el resultado entregado depende del día en que su programa será ejecutado.
+#Un partido de tenis se divide en sets. Para ganar un set, un jugador debe ganar 6 juegos, pero además 
+# debe haber ganado por lo menos dos juegos más que su rival. Si el set está empatado a 5 juegos, el ganador es 
+# el primero que llegue a 7. Si el set está empatado a 6 juegos, el set se define en un último juego, en cuyo 
+# caso el resultado final es 7-6.
 
-#Para obtener la fecha actual, puede hacerlo usando la función localtime que viene en el módulo time. Los valores se obtienen de la siguiente manera (suponiendo que hoy es 11 de marzo de 2011):
+#Sabiendo que el jugador A ha ganado m juegos, y el jugador B, n juegos, al periodista le gustaría saber:
 
-#>>> from time import localtime
-#>>> t = localtime()
-#>>> t.tm_mday
-#11
-#>>> t.tm_mon
-#3
-#>>> t.tm_year
-#2011
-#El programa debe tener en cuenta si el cumpleaños ingresado ya pasó durante este año, o si todavía no ocurre.
+#si A ganó el set, o
+#si B ganó el set, o
+#si el set todavía no termina, o
+#si el resultado es inválido (por ejemplo, 8-6 o 7-3).
+#Desarrolle un programa que solucione el problema de Solarrabietas:
 
-from time import localtime
+#Juegos ganados por A: 4
+#Juegos ganados por B: 5
+#Aun no termina
 
-t = localtime()
-current_day = t.tm_mday
-current_month = t.tm_mon
-current_year = t.tm_year
+#Juegos ganados por A: 5
+#Juegos ganados por B: 7
+#Gano B
 
-birth_day = int(input("Enter your birth date.\nDay: "))
-birth_month = int(input("Month: "))
-birth_year = int(input("Year: "))
+#Juegos ganados por A: 5
+#Juegos ganados por B: 6
+#Aun no termina
 
-age = current_year - birth_year
+#Juegos ganados por A: 3
+#Juegos ganados por B: 7
+#Invalido
 
-if current_month < birth_month or (current_month == birth_month and current_day < birth_day):
-    age -= 1
+#Juegos ganados por A: 6
+#Juegos ganados por B: 4
+#Gano A
 
-print(f"You are {age} years old.")
+a = int(input("Games won by A: "))
+b = int(input("Games won by B: "))
+    
+if a < 0 or b < 0:
+    print("Invalid")
+elif (a >= 7 and a - b < 2) or (b >= 7 and b - a < 2):
+    print("Invalid")
+elif a >= 6 and a - b >= 2:
+    print("Won A")
+elif b >= 6 and b - a >= 2:
+    print("Won B")
+elif a == 6 and b == 6:
+    print("It's not over yet")
+elif a >= 5 and b >= 5:
+    print("It's not over yet")
+else:
+    print("It's not over yet")
